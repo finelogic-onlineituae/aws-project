@@ -16,12 +16,18 @@ class FileController extends Controller
 
         File::create(['file_path' => $url]);
         return $this->viewFiles();
+        //git test comment
     }
 
     public function viewFiles()
     {
        $files = File::all();
        return view('file-upload', compact('files'));
+    }
+
+    public function getData()
+    {
+        //
     }
 
 }
