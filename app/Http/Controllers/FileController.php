@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\File;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class FileController extends Controller
 {
@@ -30,4 +32,24 @@ class FileController extends Controller
         //
     }
 
+    public function getUsers()
+    {
+        $users = User::all();
+        return response()->json([
+            'message' => 'Success',
+            'data' => $users
+        ]);
+    }
+
+    public function addUser(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make('password'),
+        ]);
+
+        return $this->getUsers();
+
+    }
 }
