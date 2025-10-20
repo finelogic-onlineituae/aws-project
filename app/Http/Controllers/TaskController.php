@@ -9,14 +9,17 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-
+        return response()->json([
+            'message' => 'success',
+            'tasks' => Task::all()
+        ]);
     }
     public function create(Request $request)
     {
         $task = Task::create([
-            'task_name' => $request->task_name,
-            'task_desc' => $request->task_desc,
-            'sheduled_date' => $request->sheduled_date,
+            'task_name' => $request->name,
+            'task_desc' => $request->desc,
+            'scheduled_date' => $request->scheduled_date,
             'duration' => $request->duration,
         ]);
 

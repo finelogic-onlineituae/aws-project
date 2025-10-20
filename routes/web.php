@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
@@ -15,3 +16,6 @@ Route::get('/register', [RegisterController::class, 'register']);
 
 Route::get('api/get-users', [FileController::class, 'getUsers']);
 Route::post('api/add-user', [FileController::class, 'addUser']);
+
+Route::get('api/get-tasks', [TaskController::class, 'index']);
+Route::post('api/add-task', [TaskController::class, 'create']);
