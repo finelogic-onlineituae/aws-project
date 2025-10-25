@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
         ]);*/
         
         
-        for($i=0; $i < 10; $i++){
-            DB::table('users')->insert([
-                'name' => Str::random(10),
-                'email' => Str::random(10).'@example.com',
-                'password' => Hash::make('password'),
+        for($i=0; $i < 25; $i++){
+            DB::table('blogs')->insert([
+                'title' => fake()->sentence(3),
+                'content' => fake()->paragraphs(5, true),
+                'author' => fake()->name(),
             ]);
            }
     }
