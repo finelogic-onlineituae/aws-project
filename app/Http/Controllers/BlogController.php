@@ -12,16 +12,17 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = Blog::all();
+
+        return resonse()->json([
+            'blogs' => $blogs,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        
-    }
+    public function store(Request $request) {}
 
     /**
      * Display the specified resource.
@@ -30,7 +31,6 @@ class BlogController extends Controller
     {
         //
     }
-
 
     /**
      * Update the specified resource in storage.

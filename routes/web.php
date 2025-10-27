@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,3 +20,5 @@ Route::post('api/add-user', [FileController::class, 'addUser']);
 
 Route::get('api/get-tasks', [TaskController::class, 'index']);
 Route::post('api/add-task', [TaskController::class, 'create']);
+
+Route::get('/api/blogs', [BlogController::class, 'index']);
