@@ -22,3 +22,7 @@ Route::get('api/get-tasks', [TaskController::class, 'index']);
 Route::post('api/add-task', [TaskController::class, 'create']);
 
 Route::get('/api/blogs', [BlogController::class, 'index']);
+Route::get('/api/blogs/{id}', [BlogController::class, 'show']);
+Route::post('/api/blogs', [BlogController::class, 'store']);
+
+Route::put('/api/blogs/{id}', [BlogController::class, 'update']);
