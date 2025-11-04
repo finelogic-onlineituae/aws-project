@@ -26,7 +26,17 @@ class AuthController extends Controller
         if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
            // return response()->json([''])
         }
+        $user = Auth::user();
         
-        
+        $user->tokens()->delete();
+
+        // Create new token
+        $token = $user->createToken('api_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login successful',
+            'token' => $token,
+            'user' => $user,
+        ], 200);
     }
 }
