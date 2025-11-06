@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function store(Request $request)
     {
-        $validator = Validator::make([
+        $validator = Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required'
         ]);
@@ -24,7 +24,10 @@ class AuthController extends Controller
         }
 
         if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-           // return response()->json([''])
+            return response()->json([
+                'status' => '401',
+                'errors' => ['email' => 'Invalid Credentials']
+            ], 401);
         }
         $user = Auth::user();
         
